@@ -977,6 +977,10 @@ public class ParquetMetadataConverter {
 
   static org.apache.parquet.column.statistics.geometry.GeometryStatistics fromParquetStatistics(
       GeometryStatistics formatGeomStats, PrimitiveType type) {
+    if (formatGeomStats == null) {
+      return null;
+    }
+
     org.apache.parquet.column.statistics.geometry.BoundingBox bbox = null;
     if (formatGeomStats.isSetBbox()) {
       BoundingBox formatBbox = formatGeomStats.getBbox();
